@@ -1,0 +1,16 @@
+.movieTile {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+}
+
+.button {
+  margin: 10px;
+}
+
+#movieTiles {
+  display: flex;
+}

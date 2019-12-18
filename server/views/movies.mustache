@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/movies.css">
+    <title>Home Page</title>
+  </head>
+  <body>
+    <form action="/movies/create" method="post">
+      <input type="text" name="title" placeholder="Movie Title">
+      <input type="text" name="description" placeholder="Movie Description">
+      <select name="genre">
+        <option value="comedy">Comedy</option>
+        <option value="drama">Drama</option>
+        <option value="action">Action</option>
+        <option value="romantic comedy">Romantic Comedy</option>
+      </select>
+      <input type="url" name="posterURL" placeholder="Poster URL">
+      <input type="submit" name="submit" value="Add Movie">
+    </form>
+    <form action="/movies/:genre" method="post">
+      <select name="genre">
+        <option value="comedy">Comedy</option>
+        <option value="drama">Drama</option>
+        <option value="action">Action</option>
+        <option value="romantic comedy">Romantic Comedy</option>
+      </select>
+      <input type="submit" name="submit" value="Sort by Genre">
+    </form>
+    <div id="movieTiles">
+    {{#movie}}
+    <div class="movieTile">
+      <form action="/movies/delete" method="post">
+        <div>{{title}}</div>
+        <img src="{{posterURL}}" style="height: 300px; width: 200px;">
+        <input class="button" type="submit" name="submit" value="Delete">
+        <input type="hidden" name="movieId" value="{{movieId}}">
+      </form>
+      <form action="/movies/:movieId" method="post">
+        <input type="hidden" name="movieId" value="{{movieId}}">
+        <input class="button" type="submit" name="submit" value="Details">
+      </form>
+    </div>
+    {{/movie}}
+    {{#details}}
+      <div>{{title}}</div>
+      <div>{{description}}</div>
+      <div>{{genre}}</div>
+      <img src="{{posterURL}}">
+    {{/details}}
+    </div>
+  </body>
+</html>
